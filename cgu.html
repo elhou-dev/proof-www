@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions Générales d'Utilisation — Proof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0B0D11;
+      --slate:  #111318;
+      --border: rgba(255,255,255,0.07);
+      --gold:   #C6A96A;
+      --gold2:  #E8D5A3;
+      --cream:  #F2EDE4;
+      --muted:  #7A7D87;
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --mono:   'DM Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+    header {
+      padding: 40px 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .wordmark span { color: var(--gold); }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 13px; }
+
+    .page-header { padding: 64px 0 48px; border-bottom: 1px solid var(--border); }
+
+    .page-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+    }
+
+    .page-date { margin-top: 16px; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+
+    .toc { margin: 40px 0; padding: 28px 32px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+    .toc-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+    .toc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
+
+    .toc-list li a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: none;
+      transition: color 0.2s;
+      display: flex;
+      gap: 10px;
+    }
+
+    .toc-list li a:hover { color: var(--cream); }
+    .toc-list li a .toc-num { color: rgba(198, 169, 106, 0.5); flex-shrink: 0; }
+
+    .content { padding: 56px 0 80px; }
+
+    .section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .section:last-child { border-bottom: none; margin-bottom: 0; }
+    .section:nth-child(1)  { animation-delay: 0.04s; }
+    .section:nth-child(2)  { animation-delay: 0.08s; }
+    .section:nth-child(3)  { animation-delay: 0.12s; }
+    .section:nth-child(4)  { animation-delay: 0.16s; }
+    .section:nth-child(5)  { animation-delay: 0.20s; }
+    .section:nth-child(6)  { animation-delay: 0.24s; }
+    .section:nth-child(7)  { animation-delay: 0.28s; }
+    .section:nth-child(8)  { animation-delay: 0.32s; }
+    .section:nth-child(9)  { animation-delay: 0.36s; }
+    .section:nth-child(10) { animation-delay: 0.40s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+    h2 { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
+
+    p { color: rgba(242, 237, 228, 0.75); margin-bottom: 14px; font-size: 13.5px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul.legal-list { list-style: none; margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+
+    ul.legal-list li {
+      font-size: 13.5px;
+      color: rgba(242, 237, 228, 0.75);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul.legal-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+
+    .plan-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+
+    .plan-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+
+    .plan-table td { padding: 12px 16px; color: rgba(242, 237, 228, 0.75); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+    .plan-table tr:last-child td { border-bottom: none; }
+    .plan-name-cell { color: var(--cream) !important; font-weight: 400; }
+
+    .highlight-box { border: 1px solid rgba(198, 169, 106, 0.2); background: rgba(198, 169, 106, 0.04); padding: 20px 24px; margin: 20px 0; }
+    .highlight-box p { margin-bottom: 0; font-size: 13px; }
+
+    a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(198, 169, 106, 0.3); transition: border-color 0.2s; }
+    a:hover { border-color: var(--gold); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .plan-table th, .plan-table td { padding: 10px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <a href="/" class="wordmark">Pro<span>o</span>f</a>
+      <a href="/" class="back-link">Retour à l'accueil</a>
+    </header>
+
+    <div class="page-header">
+      <div class="page-eyebrow">Légal</div>
+      <h1>Conditions Générales<br />d'Utilisation</h1>
+      <p class="page-date">Dernière mise à jour : mars 2026</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">Sommaire</div>
+      <ul class="toc-list">
+        <li><a href="#objet"><span class="toc-num">01</span> Objet</a></li>
+        <li><a href="#acceptation"><span class="toc-num">02</span> Acceptation</a></li>
+        <li><a href="#service"><span class="toc-num">03</span> Description du service</a></li>
+        <li><a href="#compte"><span class="toc-num">04</span> Compte utilisateur</a></li>
+        <li><a href="#abonnements"><span class="toc-num">05</span> Abonnements et paiements</a></li>
+        <li><a href="#conservation"><span class="toc-num">06</span> Conservation des données</a></li>
+        <li><a href="#propriete"><span class="toc-num">07</span> Propriété intellectuelle</a></li>
+        <li><a href="#responsabilite"><span class="toc-num">08</span> Responsabilité</a></li>
+        <li><a href="#resiliation"><span class="toc-num">09</span> Résiliation</a></li>
+        <li><a href="#droit"><span class="toc-num">10</span> Droit applicable</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+
+      <div class="section" id="objet">
+        <div class="section-label">01 — Objet</div>
+        <h2>Objet</h2>
+        <p>Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités et conditions d'utilisation de l'application Proof, accessible via l'application mobile iOS et Android, ainsi que le présent site web.</p>
+        <p>Proof est un service de gestion de preuves numériques permettant la constitution de dossiers horodatés (état des lieux, cession de biens, litiges locatifs et autres cas d'usage nécessitant une preuve numérique certifiée).</p>
+      </div>
+
+      <div class="section" id="acceptation">
+        <div class="section-label">02 — Acceptation</div>
+        <h2>Acceptation des conditions</h2>
+        <p>L'utilisation de Proof implique l'acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser le service.</p>
+        <p>L'éditeur se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle par email. La poursuite de l'utilisation du service après notification vaut acceptation des nouvelles conditions.</p>
+      </div>
+
+      <div class="section" id="service">
+        <div class="section-label">03 — Description du service</div>
+        <h2>Description du service</h2>
+        <p>Proof permet à ses utilisateurs de :</p>
+        <ul class="legal-list">
+          <li>Créer et gérer des dossiers de preuves numériques</li>
+          <li>Téléverser des fichiers (photos, PDF, vidéos) horodatés et stockés de façon sécurisée</li>
+          <li>Partager des dossiers avec d'autres utilisateurs et gérer leurs permissions</li>
+          <li>Demander et apposer des signatures numériques sur des documents</li>
+          <li>Consulter un historique complet des actions effectuées sur chaque dossier</li>
+        </ul>
+        <p>L'intégrité de chaque fichier est garantie par une empreinte cryptographique (SHA-256) calculée à l'upload.</p>
+      </div>
+
+      <div class="section" id="compte">
+        <div class="section-label">04 — Compte utilisateur</div>
+        <h2>Compte utilisateur</h2>
+        <p>L'accès au service nécessite la création d'un compte personnel. L'utilisateur s'engage à fournir des informations exactes et à les maintenir à jour.</p>
+        <p>L'utilisateur est seul responsable de la confidentialité de ses identifiants. Toute utilisation du service avec ses identifiants est présumée effectuée par l'utilisateur lui-même.</p>
+        <p>En cas de compromission de son compte, l'utilisateur doit en informer immédiatement l'éditeur à <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+      </div>
+
+      <div class="section" id="abonnements">
+        <div class="section-label">05 — Abonnements et paiements</div>
+        <h2>Abonnements et paiements</h2>
+        <p>Proof est disponible selon trois formules d'abonnement :</p>
+        <table class="plan-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Prix</th>
+              <th>Stockage</th>
+              <th>Dossiers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name-cell">Free</td>
+              <td>Gratuit</td>
+              <td>20 Mo</td>
+              <td>2 dossiers</td>
+            </tr>
+            <tr>
+              <td class="plan-name-cell">Pro</td>
+              <td>19,99 € / mois</td>
+              <td>50 Go</td>
+              <td>10 dossiers</td>
+            </tr>
+            <tr>
+              <td class="plan-name-cell">Business</td>
+              <td>49,99 € / mois</td>
+              <td>500 Go</td>
+              <td>Illimités</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Les abonnements payants sont facturés mensuellement via Stripe, prestataire de paiement sécurisé. Aucun engagement de durée n'est requis.</p>
+        <div class="highlight-box">
+          <p>L'utilisateur peut résilier son abonnement à tout moment depuis son espace personnel. La résiliation prend effet à la fin de la période de facturation en cours. Aucun remboursement partiel n'est effectué pour la période restante.</p>
+        </div>
+        <p>En cas d'échec de paiement, l'accès aux fonctionnalités payantes peut être suspendu jusqu'à régularisation.</p>
+      </div>
+
+      <div class="section" id="conservation">
+        <div class="section-label">06 — Conservation des données</div>
+        <h2>Conservation des données</h2>
+        <p>Les fichiers et dossiers déposés sur Proof sont conservés pendant une durée de <strong style="color: var(--cream);">10 ans</strong> à compter de leur date de dépôt, conformément aux exigences légales applicables en matière de preuve numérique.</p>
+        <p>Cette durée de conservation s'applique à tous les plans, y compris le plan Free, afin de garantir la valeur probatoire des documents déposés sur la plateforme.</p>
+        <p>Les fichiers sont stockés de façon chiffrée sur les serveurs AWS S3 (région eu-west-3, France). Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>
+        <p>En cas de résiliation du compte, l'utilisateur peut demander la suppression anticipée de ses données en contactant <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>. Cette demande sera traitée dans un délai de 30 jours.</p>
+      </div>
+
+      <div class="section" id="propriete">
+        <div class="section-label">07 — Propriété intellectuelle</div>
+        <h2>Propriété intellectuelle</h2>
+        <p>L'utilisateur conserve l'intégralité des droits sur les fichiers et contenus qu'il dépose sur Proof. L'éditeur ne revendique aucun droit de propriété sur ces contenus.</p>
+        <p>En déposant des fichiers sur la plateforme, l'utilisateur accorde à l'éditeur une licence non exclusive, limitée au strict nécessaire à la fourniture du service (stockage, affichage à l'utilisateur autorisé, génération de liens de téléchargement sécurisés).</p>
+        <p>Le code source, la marque, le design et les éléments constitutifs de l'application Proof sont la propriété exclusive de l'éditeur et sont protégés par le droit de la propriété intellectuelle.</p>
+      </div>
+
+      <div class="section" id="responsabilite">
+        <div class="section-label">08 — Responsabilité</div>
+        <h2>Limitation de responsabilité</h2>
+        <p>L'éditeur met en œuvre tous les moyens raisonnables pour assurer la disponibilité et la sécurité du service. Toutefois, il ne saurait être tenu responsable en cas de :</p>
+        <ul class="legal-list">
+          <li>Interruption temporaire du service pour maintenance ou incident technique</li>
+          <li>Perte de données résultant d'un événement hors de son contrôle</li>
+          <li>Utilisation frauduleuse du service par un tiers</li>
+          <li>Contenu illégal déposé par un utilisateur</li>
+        </ul>
+        <p>L'utilisateur est seul responsable des contenus qu'il dépose sur la plateforme et garantit disposer de tous les droits nécessaires à leur dépôt.</p>
+        <p>La responsabilité de l'éditeur ne pourra en aucun cas excéder le montant des sommes versées par l'utilisateur au cours des 12 derniers mois précédant l'incident.</p>
+      </div>
+
+      <div class="section" id="resiliation">
+        <div class="section-label">09 — Résiliation</div>
+        <h2>Résiliation</h2>
+        <p>L'utilisateur peut résilier son compte à tout moment depuis les paramètres de l'application ou en contactant <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+        <p>L'éditeur se réserve le droit de suspendre ou de résilier un compte en cas de violation des présentes CGU, d'utilisation abusive ou frauduleuse du service, ou de non-paiement.</p>
+        <p>En cas de résiliation, les données de l'utilisateur seront conservées pendant la durée légale applicable (10 ans pour les preuves numériques), puis supprimées, sauf demande explicite de suppression anticipée.</p>
+      </div>
+
+      <div class="section" id="droit">
+        <div class="section-label">10 — Droit applicable</div>
+        <h2>Droit applicable et juridiction</h2>
+        <p>Les présentes CGU sont soumises au droit français.</p>
+        <p>En cas de litige relatif à l'interprétation ou à l'exécution des présentes conditions, et à défaut de résolution amiable, les tribunaux compétents seront ceux de <strong style="color: var(--cream);">Toulouse (France)</strong>.</p>
+        <p>Pour toute question relative aux présentes CGU, vous pouvez contacter l'éditeur à l'adresse suivante : <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+      </div>
+
+    </div>
+
+    <footer>
+      <span class="footer-copy">© <script>document.write(new Date().getFullYear())</script> Proof — Tous droits réservés</span>
+      <div class="footer-links">
+        <a href="/">Accueil</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="mailto:contact@proof-app.eu">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

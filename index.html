@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proof — Preuve numérique certifiée</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0B0D11;
+      --slate:  #111318;
+      --border: rgba(255,255,255,0.07);
+      --gold:   #C6A96A;
+      --gold2:  #E8D5A3;
+      --cream:  #F2EDE4;
+      --muted:  #7A7D87;
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --mono:   'DM Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+    }
+
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    header {
+      padding: 40px 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .wordmark span { color: var(--gold); }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(198, 169, 106, 0.3);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .hero {
+      padding: 100px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(44px, 6vw, 68px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+    }
+
+    h1 em { font-style: italic; color: var(--gold2); }
+
+    .hero-right { padding-bottom: 4px; }
+
+    .hero-desc {
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-desc strong { color: var(--cream); font-weight: 400; }
+
+    .cta-row { display: flex; align-items: center; gap: 20px; }
+
+    .cta {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .cta:hover { background: var(--gold2); }
+
+    .cta-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .cta-link:hover { color: var(--cream); border-color: var(--cream); }
+
+    .features, .usecases, .pricing { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .feature {
+      background: var(--slate);
+      padding: 36px 28px;
+      transition: background 0.2s;
+    }
+
+    .feature:hover { background: #161820; }
+
+    .feature-icon { font-size: 20px; margin-bottom: 20px; display: block; }
+
+    .feature-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .feature-desc { font-size: 12px; line-height: 1.75; color: var(--muted); }
+
+    .usecase-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .usecase {
+      background: var(--slate);
+      padding: 28px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .usecase-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--gold);
+      opacity: 0.7;
+      padding-top: 3px;
+      flex-shrink: 0;
+      letter-spacing: 0.1em;
+    }
+
+    .usecase-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .usecase-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    .pricing-intro {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .plan { background: var(--slate); padding: 36px 28px; position: relative; }
+    .plan.featured { background: #13151C; }
+
+    .plan.featured::before {
+      content: 'Recommandé';
+      position: absolute;
+      top: -1px; right: 20px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 4px 10px;
+    }
+
+    .plan-name {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .plan-price {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .plan-price sup { font-size: 18px; vertical-align: super; }
+    .plan-period { font-size: 11px; color: var(--muted); margin-bottom: 28px; }
+
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .plan-features li {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .plan-features li::before { content: '—'; color: var(--gold); opacity: 0.6; flex-shrink: 0; }
+
+    .contact { padding: 64px 0 80px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact h2 {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .contact h2 em { font-style: italic; color: var(--gold2); }
+    .contact-sub { font-size: 12px; color: var(--muted); line-height: 1.8; }
+
+    .contact-info { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      background: var(--slate);
+    }
+
+    .contact-item-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-item-value { font-size: 13px; color: var(--cream); }
+    .contact-item-value a { color: var(--gold); text-decoration: none; }
+    .contact-item-value a:hover { color: var(--gold2); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy { font-size: 11px; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; gap: 36px; padding: 64px 0 48px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .usecase-list { grid-template-columns: 1fr; }
+      .plans { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, .features, .usecases, .pricing, .contact { animation: fadeUp 0.7s ease both; }
+    .features  { animation-delay: 0.1s; }
+    .usecases  { animation-delay: 0.15s; }
+    .pricing   { animation-delay: 0.2s; }
+    .contact   { animation-delay: 0.25s; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="wordmark">Pro<span>o</span>f</div>
+      <div class="badge">Application mobile</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Preuve numérique certifiée</p>
+        <h1>Documentez.<br /><em>Prouvez.</em><br />Protégez.</h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-desc">
+          <strong>Proof</strong> est une application mobile pour constituer des dossiers de preuves numériques horodatées — état des lieux, cession de biens, litiges locatifs.<br /><br />
+          Chaque fichier est signé cryptographiquement. Chaque action est tracée. Chaque dossier peut être partagé et co-signé.
+        </p>
+        <div class="cta-row">
+          <a href="mailto:contact@proof-app.eu" class="cta">Nous contacter</a>
+          <a href="#features" class="cta-link">Découvrir →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <p class="section-label">Fonctionnalités</p>
+      <div class="features-grid">
+        <div class="feature">
+          <span class="feature-icon">◈</span>
+          <div class="feature-title">Dossiers certifiés</div>
+          <p class="feature-desc">Organisez photos, PDF et documents dans des dossiers horodatés. Chaque fichier reçoit une empreinte SHA-256 à l'upload.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◎</span>
+          <div class="feature-title">Signatures multi-parties</div>
+          <p class="feature-desc">Invitez collaborateurs et témoins. Chacun signe électroniquement depuis son appareil. Historique immuable.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◇</span>
+          <div class="feature-title">Partage sécurisé</div>
+          <p class="feature-desc">Partagez des dossiers avec des droits lecture ou écriture. Accès révocable à tout moment. Activité complète auditée.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">▣</span>
+          <div class="feature-title">Stockage chiffré S3</div>
+          <p class="feature-desc">Fichiers stockés sur AWS S3 (eu-west-3). Accès via URLs pré-signées à durée limitée. Aucune exposition directe.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◉</span>
+          <div class="feature-title">Rapport PDF</div>
+          <p class="feature-desc">Générez un accusé de réception signé en un tap : récapitulatif, empreintes d'intégrité, liste des signataires.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◐</span>
+          <div class="feature-title">Journal d'activité</div>
+          <p class="feature-desc">Toutes les actions sont enregistrées : uploads, signatures, invitations, modifications. Traçabilité totale.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="usecases">
+      <p class="section-label">Cas d'usage</p>
+      <div class="usecase-list">
+        <div class="usecase">
+          <span class="usecase-num">01</span>
+          <div>
+            <div class="usecase-title">État des lieux</div>
+            <p class="usecase-desc">Constituez un dossier photographique horodaté à l'entrée et à la sortie d'un logement. Co-signé par locataire et bailleur.</p>
+          </div>
+        </div>
+        <div class="usecase">
+          <span class="usecase-num">02</span>
+          <div>
+            <div class="usecase-title">Cession de biens</div>
+            <p class="usecase-desc">Documentez l'état d'un bien avant cession. Preuves certifiées opposables en cas de litige.</p>
+          </div>
+        </div>
+        <div class="usecase">
+          <span class="usecase-num">03</span>
+          <div>
+            <div class="usecase-title">Litiges locatifs</div>
+            <p class="usecase-desc">Constituez un dossier de preuves numériques recevable : photos, emails, constats — tous horodatés et signés.</p>
+          </div>
+        </div>
+        <div class="usecase">
+          <span class="usecase-num">04</span>
+          <div>
+            <div class="usecase-title">Propriété intellectuelle</div>
+            <p class="usecase-desc">Prouvez l'antériorité d'une création ou d'un travail avec une empreinte cryptographique datée et inaltérable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <p class="section-label">Abonnements</p>
+      <p class="pricing-intro">Proof est disponible par abonnement mensuel. Chaque plan inclut l'accès complet à l'application mobile iOS et Android.</p>
+      <div class="plans">
+        <div class="plan">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">Gratuit</p>
+          <p class="plan-period">Pour toujours</p>
+          <ul class="plan-features">
+            <li>2 dossiers actifs</li>
+            <li>20 Mo de stockage</li>
+            <li>Conservation légale 10 ans</li>
+            <li>Signatures illimitées</li>
+            <li>Export PDF</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <p class="plan-name">Pro</p>
+          <p class="plan-price"><sup>€</sup>19<sup>,99</sup></p>
+          <p class="plan-period">par mois</p>
+          <ul class="plan-features">
+            <li>Jusqu'à 10 dossiers</li>
+            <li>50 Go de stockage</li>
+            <li>Conservation légale 10 ans</li>
+            <li>Partage multi-parties</li>
+            <li>Historique complet</li>
+            <li>Support prioritaire</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <p class="plan-name">Business</p>
+          <p class="plan-price"><sup>€</sup>49<sup>,99</sup></p>
+          <p class="plan-period">par mois</p>
+          <ul class="plan-features">
+            <li>Tout le plan Pro</li>
+            <li>500 Go de stockage</li>
+            <li>Conservation légale 10 ans</li>
+            <li>Gestion d'équipe</li>
+            <li>API dédiée</li>
+            <li>SLA garanti</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="contact-grid">
+        <div>
+          <h2>Une <em>question</em> ?<br />Parlons-en.</h2>
+          <p class="contact-sub">Proof est développé en France. Notre équipe est disponible pour répondre à vos questions sur la solution, la sécurité des données ou les plans tarifaires.</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-item-label">Email</span>
+            <span class="contact-item-value"><a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Hébergement</span>
+            <span class="contact-item-value">France / Union Européenne (AWS eu-west-3)</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Conformité</span>
+            <span class="contact-item-value">RGPD — Données traitées en UE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-copy">© <script>document.write(new Date().getFullYear())</script> Proof — Tous droits réservés</span>
+      <div class="footer-links">
+        <a href="mailto:contact@proof-app.eu">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgu.html">CGU</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
