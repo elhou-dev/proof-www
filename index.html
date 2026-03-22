@@ -6,40 +6,60 @@
   <title>Proof — Preuve numérique certifiée</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:    #0B0D11;
-      --slate:  #111318;
-      --border: rgba(255,255,255,0.07);
-      --gold:   #C6A96A;
-      --gold2:  #E8D5A3;
-      --cream:  #F2EDE4;
-      --muted:  #7A7D87;
-      --serif:  'Cormorant Garamond', Georgia, serif;
-      --mono:   'DM Mono', 'Courier New', monospace;
+      --paper:         #F5F0E8;
+      --paper-dark:    #EDE5D8;
+      --white:         #FFFFFF;
+      --ink:           #1C1612;
+      --ink-light:     #7A6E64;
+      --ink-faint:     #BDBAA8;
+      --terra:         #C84B1C;
+      --terra-light:   #F5EDE8;
+      --border:        #E5DDD4;
+      --forest:        #2D6A4F;
+      --forest-light:  #E8F4EE;
+      --honey:         #E68A1A;
+      --honey-light:   #FFF3E0;
+      --slate:         #4A6FA5;
+      --serif:         'Fraunces', Georgia, serif;
+      --sans:          'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:          'DM Mono', 'Courier New', monospace;
+      --shadow-sm:     0 1px 3px rgba(28,22,18,0.06), 0 2px 8px rgba(28,22,18,0.04);
+      --shadow-md:     0 2px 8px rgba(28,22,18,0.09), 0 8px 28px rgba(28,22,18,0.07);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--mono);
-      font-size: 14px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
       line-height: 1.7;
-      letter-spacing: 0.01em;
       overflow-x: hidden;
     }
 
+    /* Noise texture overlay */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
       opacity: 0.025;
       pointer-events: none;
+    }
+
+    /* Terracotta accent line at top */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--terra);
+      z-index: 100;
     }
 
     .wrap {
@@ -49,8 +69,9 @@
       padding: 0 32px;
     }
 
+    /* ─── HEADER ─── */
     header {
-      padding: 40px 0 32px;
+      padding: 48px 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -60,30 +81,31 @@
     .wordmark {
       font-family: var(--serif);
       font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--cream);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--ink);
     }
 
-    .wordmark span { color: var(--gold); }
+    .wordmark span { color: var(--terra); }
 
     .badge {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(198, 169, 106, 0.3);
-      padding: 4px 10px;
+      color: var(--terra);
+      background: var(--terra-light);
+      border: 1px solid rgba(200, 75, 28, 0.22);
+      padding: 4px 12px;
       border-radius: 2px;
     }
 
+    /* ─── HERO ─── */
     .hero {
-      padding: 100px 0 80px;
+      padding: 96px 0 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 64px;
       align-items: end;
       border-bottom: 1px solid var(--border);
     }
@@ -91,9 +113,9 @@
     .hero-eyebrow {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terra);
       margin-bottom: 24px;
       display: flex;
       align-items: center;
@@ -105,71 +127,92 @@
       display: block;
       width: 24px;
       height: 1px;
-      background: var(--gold);
+      background: var(--terra);
     }
 
     h1 {
       font-family: var(--serif);
-      font-size: clamp(44px, 6vw, 68px);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      color: var(--cream);
+      font-size: clamp(42px, 5.5vw, 66px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.3px;
+      color: var(--ink);
     }
 
-    h1 em { font-style: italic; color: var(--gold2); }
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--terra);
+    }
 
     .hero-right { padding-bottom: 4px; }
 
     .hero-desc {
-      font-size: 13px;
-      line-height: 1.85;
-      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--ink-light);
       margin-bottom: 32px;
     }
 
-    .hero-desc strong { color: var(--cream); font-weight: 400; }
+    .hero-desc strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
 
-    .cta-row { display: flex; align-items: center; gap: 20px; }
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
     .cta {
       display: inline-block;
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink);
-      background: var(--gold);
-      padding: 12px 24px;
+      color: #ffffff;
+      background: var(--terra);
+      padding: 12px 26px;
       text-decoration: none;
       border-radius: 2px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .cta:hover { background: var(--gold2); }
+    .cta:hover {
+      background: #b03d14;
+      transform: translateY(-1px);
+    }
 
     .cta-link {
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-light);
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
 
-    .cta-link:hover { color: var(--cream); border-color: var(--cream); }
+    .cta-link:hover {
+      color: var(--ink);
+      border-color: var(--ink-light);
+    }
 
-    .features, .usecases, .pricing { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    /* ─── SHARED SECTION STYLES ─── */
+    .features, .usecases, .pricing {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
     .section-label {
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terra);
       margin-bottom: 48px;
       display: flex;
       align-items: center;
@@ -181,104 +224,149 @@
       display: block;
       width: 24px;
       height: 1px;
-      background: var(--gold);
+      background: var(--terra);
     }
 
+    /* ─── FEATURES ─── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 12px;
     }
 
     .feature {
-      background: var(--slate);
-      padding: 36px 28px;
-      transition: background 0.2s;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      border-radius: 3px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, transform 0.25s;
     }
 
-    .feature:hover { background: #161820; }
+    .feature:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
 
-    .feature-icon { font-size: 20px; margin-bottom: 20px; display: block; }
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--terra-light);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: var(--terra);
+      font-size: 15px;
+    }
 
     .feature-title {
       font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+      margin-bottom: 8px;
       line-height: 1.3;
     }
 
-    .feature-desc { font-size: 12px; line-height: 1.75; color: var(--muted); }
+    .feature-desc {
+      font-size: 12.5px;
+      line-height: 1.8;
+      color: var(--ink-light);
+    }
 
+    /* ─── USE CASES ─── */
     .usecase-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 12px;
     }
 
     .usecase {
-      background: var(--slate);
-      padding: 28px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 28px 28px;
+      border-radius: 3px;
+      box-shadow: var(--shadow-sm);
       display: flex;
       align-items: flex-start;
       gap: 20px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .usecase:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
     }
 
     .usecase-num {
       font-family: var(--mono);
       font-size: 10px;
-      color: var(--gold);
-      opacity: 0.7;
+      color: var(--terra);
       padding-top: 3px;
       flex-shrink: 0;
       letter-spacing: 0.1em;
+      opacity: 0.7;
     }
 
     .usecase-title {
       font-family: var(--serif);
       font-size: 17px;
-      font-weight: 400;
-      color: var(--cream);
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--ink);
       margin-bottom: 6px;
     }
 
-    .usecase-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .usecase-desc {
+      font-size: 12.5px;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
 
+    /* ─── PRICING ─── */
     .pricing-intro {
-      font-size: 13px;
-      color: var(--muted);
+      font-size: 14px;
+      color: var(--ink-light);
       margin-bottom: 40px;
       max-width: 480px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     .plans {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 12px;
     }
 
-    .plan { background: var(--slate); padding: 36px 28px; position: relative; }
-    .plan.featured { background: #13151C; }
+    .plan {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      border-radius: 3px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .plan.featured {
+      border-top: 3px solid var(--terra);
+      box-shadow: var(--shadow-md);
+    }
 
     .plan.featured::before {
       content: 'Recommandé';
       position: absolute;
-      top: -1px; right: 20px;
+      top: -12px; right: 20px;
       font-family: var(--mono);
       font-size: 9px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      background: var(--gold);
-      color: var(--ink);
-      padding: 4px 10px;
+      background: var(--terra);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 2px;
     }
 
     .plan-name {
@@ -286,78 +374,122 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terra);
       margin-bottom: 16px;
     }
 
     .plan-price {
       font-family: var(--serif);
-      font-size: 42px;
-      font-weight: 300;
-      color: var(--cream);
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--ink);
       line-height: 1;
       margin-bottom: 4px;
     }
 
-    .plan-price sup { font-size: 18px; vertical-align: super; }
-    .plan-period { font-size: 11px; color: var(--muted); margin-bottom: 28px; }
+    .plan-price sup { font-size: 17px; vertical-align: super; }
 
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .plan-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-bottom: 28px;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .plan-features li {
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 12.5px;
+      color: var(--ink-light);
       display: flex;
       align-items: flex-start;
       gap: 10px;
     }
 
-    .plan-features li::before { content: '—'; color: var(--gold); opacity: 0.6; flex-shrink: 0; }
+    .plan-features li::before {
+      content: '—';
+      font-family: var(--mono);
+      color: var(--terra);
+      opacity: 0.55;
+      flex-shrink: 0;
+    }
 
-    .contact { padding: 64px 0 80px; }
+    /* ─── CONTACT ─── */
+    .contact { padding: 72px 0 88px; }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 64px;
       align-items: start;
     }
 
     .contact h2 {
       font-family: var(--serif);
       font-size: 36px;
-      font-weight: 300;
-      line-height: 1.2;
-      color: var(--cream);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+      color: var(--ink);
       margin-bottom: 16px;
     }
 
-    .contact h2 em { font-style: italic; color: var(--gold2); }
-    .contact-sub { font-size: 12px; color: var(--muted); line-height: 1.8; }
+    .contact h2 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--terra);
+    }
 
-    .contact-info { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+    .contact-sub {
+      font-size: 13.5px;
+      color: var(--ink-light);
+      line-height: 1.85;
+    }
 
-    .contact-item {
+    .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      padding: 20px 24px;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    .contact-item {
+      background: var(--white);
       border: 1px solid var(--border);
-      background: var(--slate);
+      border-radius: 3px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
     }
 
     .contact-item-label {
       font-family: var(--mono);
       font-size: 9px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-faint);
+      margin-bottom: 5px;
     }
 
-    .contact-item-value { font-size: 13px; color: var(--cream); }
-    .contact-item-value a { color: var(--gold); text-decoration: none; }
-    .contact-item-value a:hover { color: var(--gold2); }
+    .contact-item-value {
+      font-size: 13.5px;
+      color: var(--ink);
+    }
 
+    .contact-item-value a {
+      color: var(--terra);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-item-value a:hover { opacity: 0.75; }
+
+    /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid var(--border);
       padding: 24px 0;
@@ -366,19 +498,24 @@
       justify-content: space-between;
     }
 
-    .footer-copy { font-size: 11px; color: var(--muted); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-faint);
+    }
+
     .footer-links { display: flex; gap: 24px; }
 
     .footer-links a {
-      font-size: 11px;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--ink-light);
       text-decoration: none;
-      letter-spacing: 0.08em;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--cream); }
+    .footer-links a:hover { color: var(--ink); }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 680px) {
       .hero { grid-template-columns: 1fr; gap: 36px; padding: 64px 0 48px; }
       .features-grid { grid-template-columns: 1fr; }
@@ -388,16 +525,18 @@
       footer { flex-direction: column; gap: 16px; text-align: center; }
     }
 
+    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero, .features, .usecases, .pricing, .contact { animation: fadeUp 0.7s ease both; }
-    .features  { animation-delay: 0.1s; }
-    .usecases  { animation-delay: 0.15s; }
-    .pricing   { animation-delay: 0.2s; }
-    .contact   { animation-delay: 0.25s; }
+    header    { animation: fadeUp 0.5s ease both; }
+    .hero     { animation: fadeUp 0.6s ease 0.05s both; }
+    .features { animation: fadeUp 0.6s ease 0.1s  both; }
+    .usecases { animation: fadeUp 0.6s ease 0.15s both; }
+    .pricing  { animation: fadeUp 0.6s ease 0.2s  both; }
+    .contact  { animation: fadeUp 0.6s ease 0.25s both; }
   </style>
 </head>
 <body>
@@ -429,32 +568,32 @@
       <p class="section-label">Fonctionnalités</p>
       <div class="features-grid">
         <div class="feature">
-          <span class="feature-icon">◈</span>
+          <div class="feature-icon">◈</div>
           <div class="feature-title">Dossiers certifiés</div>
           <p class="feature-desc">Organisez photos, PDF et documents dans des dossiers horodatés. Chaque fichier reçoit une empreinte SHA-256 à l'upload.</p>
         </div>
         <div class="feature">
-          <span class="feature-icon">◎</span>
+          <div class="feature-icon">◎</div>
           <div class="feature-title">Signatures multi-parties</div>
           <p class="feature-desc">Invitez collaborateurs et témoins. Chacun signe électroniquement depuis son appareil. Historique immuable.</p>
         </div>
         <div class="feature">
-          <span class="feature-icon">◇</span>
+          <div class="feature-icon">◇</div>
           <div class="feature-title">Partage sécurisé</div>
           <p class="feature-desc">Partagez des dossiers avec des droits lecture ou écriture. Accès révocable à tout moment. Activité complète auditée.</p>
         </div>
         <div class="feature">
-          <span class="feature-icon">▣</span>
+          <div class="feature-icon">▣</div>
           <div class="feature-title">Stockage chiffré S3</div>
           <p class="feature-desc">Fichiers stockés sur AWS S3 (eu-west-3). Accès via URLs pré-signées à durée limitée. Aucune exposition directe.</p>
         </div>
         <div class="feature">
-          <span class="feature-icon">◉</span>
+          <div class="feature-icon">◉</div>
           <div class="feature-title">Rapport PDF</div>
           <p class="feature-desc">Générez un accusé de réception signé en un tap : récapitulatif, empreintes d'intégrité, liste des signataires.</p>
         </div>
         <div class="feature">
-          <span class="feature-icon">◐</span>
+          <div class="feature-icon">◐</div>
           <div class="feature-title">Journal d'activité</div>
           <p class="feature-desc">Toutes les actions sont enregistrées : uploads, signatures, invitations, modifications. Traçabilité totale.</p>
         </div>
@@ -548,16 +687,16 @@
         </div>
         <div class="contact-info">
           <div class="contact-item">
-            <span class="contact-item-label">Email</span>
-            <span class="contact-item-value"><a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></span>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value"><a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></div>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Hébergement</span>
-            <span class="contact-item-value">France / Union Européenne (AWS eu-west-3)</span>
+            <div class="contact-item-label">Hébergement</div>
+            <div class="contact-item-value">France / Union Européenne (AWS eu-west-3)</div>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Conformité</span>
-            <span class="contact-item-value">RGPD — Données traitées en UE</span>
+            <div class="contact-item-label">Conformité</div>
+            <div class="contact-item-value">RGPD — Données traitées en UE</div>
           </div>
         </div>
       </div>
@@ -569,6 +708,7 @@
         <a href="mailto:contact@proof-app.eu">Contact</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgu.html">CGU</a>
+        <a href="privacy-policy.html">Confidentialité</a>
       </div>
     </footer>
 
