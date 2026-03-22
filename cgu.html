@@ -6,31 +6,34 @@
   <title>Conditions Générales d'Utilisation — Proof</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:    #0B0D11;
-      --slate:  #111318;
-      --border: rgba(255,255,255,0.07);
-      --gold:   #C6A96A;
-      --gold2:  #E8D5A3;
-      --cream:  #F2EDE4;
-      --muted:  #7A7D87;
-      --serif:  'Cormorant Garamond', Georgia, serif;
-      --mono:   'DM Mono', 'Courier New', monospace;
+      --paper:       #F5F0E8;
+      --paper-dark:  #EDE5D8;
+      --white:       #FFFFFF;
+      --ink:         #1C1612;
+      --ink-light:   #7A6E64;
+      --ink-faint:   #BDBAA8;
+      --terra:       #C84B1C;
+      --terra-light: #F5EDE8;
+      --border:      #E5DDD4;
+      --shadow-sm:   0 1px 3px rgba(28,22,18,0.06), 0 2px 8px rgba(28,22,18,0.04);
+      --serif:       'Fraunces', Georgia, serif;
+      --sans:        'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', 'Courier New', monospace;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--mono);
-      font-size: 14px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
       line-height: 1.8;
-      letter-spacing: 0.01em;
       overflow-x: hidden;
     }
 
@@ -42,10 +45,19 @@
       pointer-events: none;
     }
 
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--terra);
+      z-index: 100;
+    }
+
     .wrap { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 32px; }
 
     header {
-      padding: 40px 0 32px;
+      padding: 44px 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,21 +67,20 @@
     .wordmark {
       font-family: var(--serif);
       font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--cream);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--ink);
       text-decoration: none;
     }
 
-    .wordmark span { color: var(--gold); }
+    .wordmark span { color: var(--terra); }
 
     .back-link {
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-light);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -77,7 +88,7 @@
       transition: color 0.2s;
     }
 
-    .back-link:hover { color: var(--gold); }
+    .back-link:hover { color: var(--terra); }
     .back-link::before { content: '←'; font-size: 13px; }
 
     .page-header { padding: 64px 0 48px; border-bottom: 1px solid var(--border); }
@@ -87,34 +98,34 @@
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terra);
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    .page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra); }
 
     h1 {
       font-family: var(--serif);
       font-size: clamp(32px, 4.5vw, 48px);
-      font-weight: 300;
+      font-weight: 700;
       line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: var(--cream);
+      letter-spacing: -0.3px;
+      color: var(--ink);
     }
 
-    .page-date { margin-top: 16px; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .page-date { margin-top: 16px; font-size: 11px; color: var(--ink-faint); font-family: var(--mono); }
 
-    .toc { margin: 40px 0; padding: 28px 32px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
-    .toc-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .toc { margin: 40px 0; padding: 28px 32px; border: 1px solid var(--border); background: var(--white); box-shadow: var(--shadow-sm); border-radius: 3px; }
+    .toc-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; font-family: var(--mono); }
 
     .toc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
 
     .toc-list li a {
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 12.5px;
+      color: var(--ink-light);
       text-decoration: none;
       border-bottom: none;
       transition: color 0.2s;
@@ -122,8 +133,8 @@
       gap: 10px;
     }
 
-    .toc-list li a:hover { color: var(--cream); }
-    .toc-list li a .toc-num { color: rgba(198, 169, 106, 0.5); flex-shrink: 0; }
+    .toc-list li a:hover { color: var(--ink); }
+    .toc-list li a .toc-num { color: rgba(200, 75, 28, 0.5); flex-shrink: 0; font-family: var(--mono); }
 
     .content { padding: 56px 0 80px; }
 
@@ -150,46 +161,47 @@
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; }
 
-    h2 { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
+    h2 { font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink); margin-bottom: 20px; line-height: 1.2; }
 
-    p { color: rgba(242, 237, 228, 0.75); margin-bottom: 14px; font-size: 13.5px; }
+    p { color: var(--ink-light); margin-bottom: 14px; font-size: 14px; }
     p:last-child { margin-bottom: 0; }
 
     ul.legal-list { list-style: none; margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
 
     ul.legal-list li {
-      font-size: 13.5px;
-      color: rgba(242, 237, 228, 0.75);
+      font-size: 14px;
+      color: var(--ink-light);
       padding-left: 20px;
       position: relative;
     }
 
-    ul.legal-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+    ul.legal-list li::before { content: '—'; position: absolute; left: 0; color: var(--terra); opacity: 0.6; font-size: 11px; font-family: var(--mono); }
 
-    .plan-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+    .plan-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13.5px; }
 
     .plan-table th {
       text-align: left;
+      font-family: var(--mono);
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terra);
       padding: 10px 16px;
       border-bottom: 1px solid var(--border);
       font-weight: 400;
     }
 
-    .plan-table td { padding: 12px 16px; color: rgba(242, 237, 228, 0.75); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+    .plan-table td { padding: 12px 16px; color: var(--ink-light); border-bottom: 1px solid var(--paper-dark); vertical-align: top; }
     .plan-table tr:last-child td { border-bottom: none; }
-    .plan-name-cell { color: var(--cream) !important; font-weight: 400; }
+    .plan-name-cell { color: var(--ink) !important; font-weight: 600; }
 
-    .highlight-box { border: 1px solid rgba(198, 169, 106, 0.2); background: rgba(198, 169, 106, 0.04); padding: 20px 24px; margin: 20px 0; }
-    .highlight-box p { margin-bottom: 0; font-size: 13px; }
+    .highlight-box { border: 1px solid rgba(200, 75, 28, 0.18); background: var(--terra-light); padding: 20px 24px; margin: 20px 0; border-radius: 3px; }
+    .highlight-box p { margin-bottom: 0; font-size: 13.5px; }
 
-    a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(198, 169, 106, 0.3); transition: border-color 0.2s; }
-    a:hover { border-color: var(--gold); }
+    a { color: var(--terra); text-decoration: none; border-bottom: 1px solid rgba(200, 75, 28, 0.3); transition: border-color 0.2s; }
+    a:hover { border-color: var(--terra); }
 
     footer {
       border-top: 1px solid var(--border);
@@ -201,19 +213,17 @@
       flex-wrap: wrap;
     }
 
-    .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+    .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
     .footer-links { display: flex; gap: 24px; }
 
     .footer-links a {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--ink-light);
       border-bottom: none;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a:hover { color: var(--ink); }
 
     @media (max-width: 600px) {
       .wrap { padding: 0 20px; }
@@ -335,7 +345,7 @@
       <div class="section" id="conservation">
         <div class="section-label">06 — Conservation des données</div>
         <h2>Conservation des données</h2>
-        <p>Les fichiers et dossiers déposés sur Proof sont conservés pendant une durée de <strong style="color: var(--cream);">10 ans</strong> à compter de leur date de dépôt, conformément aux exigences légales applicables en matière de preuve numérique.</p>
+        <p>Les fichiers et dossiers déposés sur Proof sont conservés pendant une durée de <strong style="color: var(--ink);">10 ans</strong> à compter de leur date de dépôt, conformément aux exigences légales applicables en matière de preuve numérique.</p>
         <p>Cette durée de conservation s'applique à tous les plans, y compris le plan Free, afin de garantir la valeur probatoire des documents déposés sur la plateforme.</p>
         <p>Les fichiers sont stockés de façon chiffrée sur les serveurs AWS S3 (région eu-west-3, France). Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>
         <p>En cas de résiliation du compte, l'utilisateur peut demander la suppression anticipée de ses données en contactant <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>. Cette demande sera traitée dans un délai de 30 jours.</p>
@@ -375,7 +385,7 @@
         <div class="section-label">10 — Droit applicable</div>
         <h2>Droit applicable et juridiction</h2>
         <p>Les présentes CGU sont soumises au droit français.</p>
-        <p>En cas de litige relatif à l'interprétation ou à l'exécution des présentes conditions, et à défaut de résolution amiable, les tribunaux compétents seront ceux de <strong style="color: var(--cream);">Toulouse (France)</strong>.</p>
+        <p>En cas de litige relatif à l'interprétation ou à l'exécution des présentes conditions, et à défaut de résolution amiable, les tribunaux compétents seront ceux de <strong style="color: var(--ink);">Toulouse (France)</strong>.</p>
         <p>Pour toute question relative aux présentes CGU, vous pouvez contacter l'éditeur à l'adresse suivante : <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
       </div>
 
