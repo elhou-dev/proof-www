@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+
+  <!-- Folder shadow -->
+  <rect x="72" y="167" width="376" height="242" rx="14" fill="#1C1612" opacity="0.10" transform="translate(6,7)"/>
+
+  <!-- Folder tab -->
+  <path d="M 72 163
+           L 72 123 Q 72 111 84 111
+           L 218 111 Q 228 111 233 121
+           L 248 163 Z"
+        fill="#D85828"/>
+
+  <!-- Folder body -->
+  <rect x="72" y="159" width="376" height="242" rx="14" fill="#C84B1C"/>
+
+  <!-- Subtle doc lines inside folder -->
+  <line x1="120" y1="233" x2="392" y2="233" stroke="#F5F0E8" stroke-width="1.8" opacity="0.18"/>
+  <line x1="120" y1="263" x2="330" y2="263" stroke="#F5F0E8" stroke-width="1.8" opacity="0.18"/>
+  <line x1="120" y1="293" x2="360" y2="293" stroke="#F5F0E8" stroke-width="1.8" opacity="0.18"/>
+
+  <!-- Letter P — Fraunces bold -->
+  <text
+    x="258"
+    y="357"
+    font-family="'Fraunces', 'Georgia', 'Times New Roman', serif"
+    font-size="230"
+    font-weight="700"
+    fill="#F5F0E8"
+    text-anchor="middle"
+    opacity="0.97">P</text>
+
+</svg>
