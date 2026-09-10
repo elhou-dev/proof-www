@@ -338,14 +338,14 @@
 
     .plans {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
 
     .plan {
       background: var(--white);
       border: 1px solid var(--border);
-      padding: 36px 28px;
+      padding: 32px 20px;
       border-radius: 3px;
       box-shadow: var(--shadow-sm);
       position: relative;
@@ -381,7 +381,7 @@
 
     .plan-price {
       font-family: var(--serif);
-      font-size: 40px;
+      font-size: 34px;
       font-weight: 700;
       letter-spacing: -0.3px;
       color: var(--ink);
@@ -517,6 +517,10 @@
     .footer-links a:hover { color: var(--ink); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .plans { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 680px) {
       .hero { grid-template-columns: 1fr; gap: 36px; padding: 64px 0 48px; }
       .features-grid { grid-template-columns: 1fr; }
@@ -645,8 +649,18 @@
           <p class="plan-period">Pour toujours</p>
           <ul class="plan-features">
             <li>1 dossier actif</li>
-            <li>20 Mo de stockage</li>
-            <li>Conservation légale 10 ans</li>
+            <li>50 Mo de stockage</li>
+            <li>Signatures illimitées</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <p class="plan-name">Basic</p>
+          <p class="plan-price"><sup>€</sup>9<sup>,99</sup></p>
+          <p class="plan-period">par mois</p>
+          <ul class="plan-features">
+            <li>Jusqu'à 2 dossiers</li>
+            <li>10 Go de stockage</li>
+            <li>Signatures illimitées</li>
           </ul>
         </div>
         <div class="plan featured">
@@ -655,9 +669,8 @@
           <p class="plan-period">par mois</p>
           <ul class="plan-features">
             <li>Jusqu'à 10 dossiers</li>
-            <li>50 Go de stockage</li>
-            <li>Conservation légale 10 ans</li>
-            <li>Support prioritaire</li>
+            <li>100 Go de stockage</li>
+            <li>Signatures illimitées</li>
           </ul>
         </div>
         <div class="plan">
@@ -667,9 +680,8 @@
           <ul class="plan-features">
             <li>Dossiers en illimité</li>
             <li>500 Go de stockage</li>
-            <li>Conservation légale 10 ans</li>
-            <li>API dédiée</li>
-            <li>SLA garanti</li>
+            <li>Signatures illimitées</li>
+            <li>Support prioritaire</li>
           </ul>
         </div>
       </div>
