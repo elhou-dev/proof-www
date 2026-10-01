@@ -1,0 +1,161 @@
+/* Legal pages (CGU, legal notice, privacy policy) on the Proof 2.0 design.
+   Same tokens, header and footer as the landing page; the legal copy keeps its original markup. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #F5F6F8;
+  --card:   #FFFFFF;
+  --grey:   #EEF0F4;
+  --press:  #F7F8FA;
+  --line:   #E8EAEF;
+  --line2:  #F0F2F5;
+  --ink:    #0F1219;
+  --ink2:   #5B6472;
+  --ink3:   #9AA1AD;
+  --brand:  #C4552F;
+  --brandL: #FBEDE8;
+  --brandD: #B24B30;
+  --r-card: 16px;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.6;
+}
+a { color: var(--brandD); text-decoration: none; }
+a:hover { color: var(--brand); }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1080px; margin: 0 auto; padding: 0 20px;
+  display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 48px;
+}
+.wrap > header, .wrap > .page-header, .wrap > footer { grid-column: 1 / -1; }
+
+/* ── Header ── */
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.logo { display: block; line-height: 0; }
+.logo img { height: 36px; width: auto; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--ink2); }
+.back-link:hover { color: var(--ink); }
+
+/* ── Title ── */
+.page-header { padding: 56px 0 40px; }
+.page-eyebrow {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 600; color: var(--ink2);
+  padding: 5px 10px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+h1 { font-size: clamp(34px, 4.6vw, 48px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.05; }
+.page-date { font-size: 13px; color: var(--ink2); margin-top: 14px; font-variant-numeric: tabular-nums; }
+
+/* ── Table of contents: a register card, sticky beside the text ── */
+.toc {
+  align-self: start; position: sticky; top: 96px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card);
+  overflow: hidden; margin-bottom: 64px;
+}
+.toc-title {
+  padding: 14px 16px 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink2);
+}
+.toc-list { list-style: none; }
+.toc-list a {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 10px 16px; border-top: 1px solid var(--line2);
+  font-size: 13.5px; font-weight: 500; color: var(--ink);
+}
+.toc-list a:hover { background: var(--press); color: var(--ink); }
+.toc-num { font-size: 12px; font-weight: 600; color: var(--ink3); font-variant-numeric: tabular-nums; flex: none; }
+
+/* ── Text ── */
+.content { min-width: 0; padding-bottom: 72px; }
+/* A page without a table of contents (legal notice) reads in one column */
+.wrap.no-toc { grid-template-columns: minmax(0, 1fr); }
+.section { padding: 32px 0; border-top: 1px solid var(--line); }
+.section:first-child { border-top: 0; padding-top: 0; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink2); margin-bottom: 8px;
+}
+h2 { font-size: 24px; font-weight: 700; letter-spacing: -.6px; line-height: 1.2; margin-bottom: 14px; }
+.content p { color: var(--ink2); margin-bottom: 12px; max-width: 680px; text-wrap: pretty; }
+.content p:last-child { margin-bottom: 0; }
+.content strong { font-weight: 600; }
+
+.legal-list { list-style: none; margin: 4px 0 14px; max-width: 680px; }
+.legal-list li { position: relative; padding-left: 18px; color: var(--ink2); margin-bottom: 6px; }
+.legal-list li::before {
+  content: ""; position: absolute; left: 2px; top: .65em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--ink3);
+}
+
+.highlight-box {
+  background: var(--brandL); border-radius: 14px;
+  padding: 14px 16px; margin: 4px 0 14px; max-width: 680px;
+}
+.highlight-box p { color: var(--ink); margin-bottom: 0; }
+
+/* Label / value rows (legal notice) */
+.field-row {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  padding: 12px 0; border-top: 1px solid var(--line2); max-width: 680px;
+}
+.field-row:last-child { border-bottom: 1px solid var(--line2); }
+.field-label { flex: 0 0 200px; font-size: 13px; color: var(--ink2); }
+.field-value { flex: 1; min-width: 200px; font-size: 14.5px; font-weight: 500; }
+
+/* Tables (plans in the CGU, processors in the privacy policy) */
+.plan-table, .processor-table {
+  width: 100%; max-width: 680px; margin: 4px 0 16px;
+  border-collapse: separate; border-spacing: 0;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden;
+  font-size: 13.5px;
+}
+.plan-table th, .processor-table th {
+  text-align: left; padding: 12px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink2);
+  background: var(--press); border-bottom: 1px solid var(--line);
+}
+.plan-table td, .processor-table td { padding: 12px 14px; border-top: 1px solid var(--line2); color: var(--ink2); font-variant-numeric: tabular-nums; }
+.plan-table tbody tr:first-child td, .processor-table tbody tr:first-child td { border-top: 0; }
+.plan-name-cell, .processor-name { color: var(--ink) !important; font-weight: 600; }
+
+/* GDPR rights cards (privacy policy) */
+.rights-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;
+  margin: 4px 0 16px; max-width: 680px;
+}
+.right-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.right-title { font-size: 14.5px; font-weight: 600; letter-spacing: -.1px; margin-bottom: 4px; }
+.content .right-desc { font-size: 13px; line-height: 1.55; margin: 0; }
+
+/* ── Footer (same as the landing page) ── */
+footer {
+  border-top: 1px solid var(--line); padding: 22px 0 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 12.5px; color: var(--ink2); font-variant-numeric: tabular-nums;
+}
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--ink2); }
+footer a:hover, footer a[aria-current="page"] { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .wrap { display: block; }
+  .toc { position: static; margin-bottom: 40px; }
+  .page-header { padding: 40px 0 28px; }
+  .field-label { flex-basis: 100%; }
+}
