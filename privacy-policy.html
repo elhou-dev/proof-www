@@ -58,11 +58,13 @@
         <p>Dans le cadre de la fourniture du service, Proof collecte les données suivantes :</p>
 
         <ul class="legal-list">
-          <li><strong style="color: var(--ink);">Données d'identité</strong> — prénom, nom, adresse email</li>
-          <li><strong style="color: var(--ink);">Fichiers déposés</strong> — photos, documents PDF et autres fichiers uploadés dans les dossiers de preuves</li>
-          <li><strong style="color: var(--ink);">Métadonnées d'activité</strong> — historique des actions (uploads, signatures, invitations, modifications), horodatages, empreintes SHA-256 des fichiers</li>
-          <li><strong style="color: var(--ink);">Données de paiement</strong> — gérées exclusivement par Stripe ; Proof ne stocke aucune donnée bancaire</li>
-          <li><strong style="color: var(--ink);">Données techniques</strong> — adresse IP lors des connexions, logs d'accès à l'API</li>
+          <li><strong style="color: var(--ink);">Données d'identité</strong> — prénom, nom, adresse email ; identifiant de compte Google si vous vous connectez avec Google</li>
+          <li><strong style="color: var(--ink);">Fichiers déposés</strong> — photos, vidéos, documents PDF et autres fichiers déposés dans les dossiers de preuves et les modèles de dossier</li>
+          <li><strong style="color: var(--ink);">Métadonnées d'activité</strong> — historique des actions (dépôts, signatures, invitations, modifications), horodatages et fuseau horaire de l'appareil au moment du dépôt ou de la signature, empreintes SHA-256 des fichiers</li>
+          <li><strong style="color: var(--ink);">Données de signature</strong> — nom et prénom saisis par le signataire lors de la signature officielle d'un dossier, date et fuseau horaire de la confirmation</li>
+          <li><strong style="color: var(--ink);">Préférences et notifications</strong> — langue de l'application, jeton de notification de l'appareil (pour les notifications push)</li>
+          <li><strong style="color: var(--ink);">Données de paiement</strong> — gérées par Stripe (Android et web) ou par Apple (iOS) ; Proof ne stocke aucune donnée bancaire, seulement l'identifiant client Stripe et l'état de l'abonnement</li>
+          <li><strong style="color: var(--ink);">Données techniques</strong> — adresse IP lors des connexions, logs d'accès à l'API ; pour les comptes administrateurs, l'adresse IP est conservée dans le journal d'audit de la console</li>
         </ul>
 
         <div class="highlight-box">
@@ -78,7 +80,8 @@
           <li>Création et gestion des comptes utilisateurs</li>
           <li>Fourniture du service de gestion de preuves numériques</li>
           <li>Permettre la signature électronique des documents entre parties</li>
-          <li>Gestion des abonnements et facturation via Stripe</li>
+          <li>Gestion des abonnements et facturation via Stripe et l'App Store</li>
+          <li>Envoi des emails de service (vérification du compte, réinitialisation du mot de passe, demandes de signature) et des notifications push</li>
           <li>Garantir l'intégrité et la traçabilité des dossiers de preuves</li>
           <li>Assurer la sécurité et le bon fonctionnement de l'application</li>
         </ul>
@@ -111,25 +114,46 @@
             </tr>
             <tr>
               <td class="processor-name">Stripe Inc.</td>
-              <td>Traitement des paiements</td>
+              <td>Traitement des paiements (Android et web)</td>
               <td>États-Unis (certifié PCI-DSS)</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Apple</td>
+              <td>Traitement des paiements (iOS, App Store)</td>
+              <td>Irlande / États-Unis</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Resend, Inc.</td>
+              <td>Envoi des emails de service</td>
+              <td>États-Unis</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Google (Firebase Cloud Messaging)</td>
+              <td>Acheminement des notifications push</td>
+              <td>États-Unis</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Google (Google Sign-In)</td>
+              <td>Connexion avec un compte Google, si vous la choisissez</td>
+              <td>États-Unis</td>
             </tr>
           </tbody>
         </table>
 
-        <p>Les fichiers sont exclusivement stockés sur des serveurs AWS situés en France (région eu-west-3). Stripe traite les données de paiement aux États-Unis dans le cadre de garanties appropriées (clauses contractuelles types).</p>
+        <p>Les fichiers déposés et les sauvegardes de la base de données sont stockés sur des serveurs AWS situés en France (région eu-west-3). Les transferts vers les États-Unis (paiement, emails, notifications, connexion Google) sont encadrés par des garanties appropriées (clauses contractuelles types de la Commission européenne ou Data Privacy Framework).</p>
       </div>
 
       <div class="section" id="conservation">
         <div class="section-label">05 — Conservation</div>
         <h2>Durées de conservation</h2>
         <ul class="legal-list">
-          <li><strong style="color: var(--ink);">Preuves numériques</strong> (fichiers, dossiers, signatures, historique) — <strong style="color: var(--ink);">10 ans</strong> à compter du dépôt, pour garantir leur valeur probatoire légale</li>
-          <li><strong style="color: var(--ink);">Données de compte</strong> (email, prénom, nom) — durée de vie du compte, puis suppression dans les 30 jours suivant la clôture</li>
+          <li><strong style="color: var(--ink);">Preuves numériques</strong> (fichiers, dossiers, signatures, historique) — tant que le dossier existe. Un dossier supprimé par son propriétaire est effacé immédiatement ; s'il porte la signature d'un tiers, il est archivé au lieu d'être effacé, pour préserver la preuve de l'autre partie</li>
+          <li><strong style="color: var(--ink);">Données de compte</strong> (email, prénom, nom) — durée de vie du compte. La suppression du compte depuis l'application efface immédiatement le compte, ses dossiers, ses fichiers, ses signatures et son historique</li>
+          <li><strong style="color: var(--ink);">Sauvegardes</strong> — les sauvegardes de la base de données peuvent contenir des données supprimées jusqu'à leur renouvellement</li>
           <li><strong style="color: var(--ink);">Logs techniques</strong> — 90 jours maximum</li>
           <li><strong style="color: var(--ink);">Données de paiement</strong> — conservées par Stripe selon leur politique propre</li>
         </ul>
-        <p>En cas de demande de suppression anticipée, les données seront supprimées dans un délai de 30 jours, sauf obligation légale de conservation.</p>
+        <p>Vous pouvez supprimer vous-même un dossier ou votre compte depuis l'application, à tout moment. Une demande adressée par email à <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a> est traitée dans un délai de 30 jours.</p>
       </div>
 
       <div class="section" id="droits">
@@ -173,7 +197,7 @@
         <div class="highlight-box">
           <p>Proof <strong style="color: var(--ink);">n'utilise pas de cookies publicitaires</strong>, ne pratique aucun tracking comportemental et ne revend aucune donnée à des tiers.</p>
         </div>
-        <p>L'application mobile ne dépose aucun cookie. Le site web utilise uniquement des ressources nécessaires au bon affichage (polices Google Fonts). Aucun outil d'analytics tiers n'est actif sur ce site.</p>
+        <p>L'application mobile ne dépose aucun cookie. Le site web n'utilise aucun cookie : il charge seulement les polices Google Fonts et mémorise votre choix de langue (français ou anglais) dans le stockage local de votre navigateur, sans le transmettre. Aucun outil d'analytics tiers n'est actif sur ce site.</p>
       </div>
 
       <div class="section" id="contact">
