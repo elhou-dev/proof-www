@@ -62,13 +62,14 @@
         <h2>Description du service</h2>
         <p>Proof permet à ses utilisateurs de :</p>
         <ul class="legal-list">
-          <li>Créer et gérer des dossiers de preuves numériques</li>
+          <li>Créer et gérer des dossiers de preuves numériques, et réutiliser des modèles de dossier</li>
           <li>Téléverser des fichiers (photos, PDF, vidéos) horodatés et stockés de façon sécurisée</li>
-          <li>Partager des dossiers avec d'autres utilisateurs et gérer leurs permissions</li>
-          <li>Demander et apposer des signatures numériques sur des documents</li>
-          <li>Consulter un historique complet des actions effectuées sur chaque dossier</li>
+          <li>Partager des dossiers avec d'autres utilisateurs, par invitation ou par QR code, et gérer leurs permissions</li>
+          <li>Signer chaque fichier depuis l'application, puis faire confirmer la signature officielle du dossier par chaque partie via un lien reçu par email, valable 48 heures</li>
+          <li>Recevoir un rapport PDF récapitulatif une fois le dossier signé par toutes les parties</li>
+          <li>Consulter un historique complet des actions effectuées sur chaque dossier et recevoir des notifications</li>
         </ul>
-        <p>L'intégrité de chaque fichier est garantie par une empreinte cryptographique (SHA-256) calculée à l'upload.</p>
+        <p>Lorsque toutes les parties ont confirmé la signature officielle d'un dossier, une empreinte cryptographique (SHA-256) est calculée pour chacun de ses fichiers et reportée dans le rapport PDF : toute modification ultérieure d'un fichier produirait une empreinte différente.</p>
       </div>
 
       <div class="section" id="compte">
@@ -82,7 +83,7 @@
       <div class="section" id="abonnements">
         <div class="section-label">05 — Abonnements et paiements</div>
         <h2>Abonnements et paiements</h2>
-        <p>Proof est disponible selon trois formules d'abonnement :</p>
+        <p>Proof est disponible selon quatre formules d'abonnement :</p>
         <table class="plan-table">
           <thead>
             <tr>
@@ -129,10 +130,10 @@
       <div class="section" id="conservation">
         <div class="section-label">06 — Conservation des données</div>
         <h2>Conservation des données</h2>
-        <p>Les fichiers et dossiers déposés sur Proof sont conservés pendant une durée de <strong style="color: var(--ink);">10 ans</strong> à compter de leur date de dépôt, conformément aux exigences légales applicables en matière de preuve numérique.</p>
-        <p>Cette durée de conservation s'applique à tous les plans, y compris le plan Free, afin de garantir la valeur probatoire des documents déposés sur la plateforme.</p>
+        <p>Les fichiers et dossiers déposés sur Proof sont conservés tant que leur propriétaire ne les supprime pas et que son compte existe, quel que soit le plan.</p>
+        <p>Un dossier supprimé par son propriétaire est effacé immédiatement. Par exception, un dossier portant la signature d'un tiers est archivé au lieu d'être effacé, afin de préserver la preuve détenue par l'autre partie. Il appartient à l'utilisateur de télécharger et de conserver les documents et rapports dont il pourrait avoir besoin.</p>
         <p>Les fichiers sont stockés de façon chiffrée sur les serveurs AWS S3 (région eu-west-3, France). Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>
-        <p>En cas de résiliation du compte, l'utilisateur peut demander la suppression anticipée de ses données en contactant <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>. Cette demande sera traitée dans un délai de 30 jours.</p>
+        <p>L'utilisateur peut supprimer son compte à tout moment depuis l'application : le compte, ses dossiers, ses fichiers, ses signatures et son historique sont alors effacés immédiatement. Une demande adressée à <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a> est traitée dans un délai de 30 jours.</p>
       </div>
 
       <div class="section" id="propriete">
@@ -162,7 +163,7 @@
         <h2>Résiliation</h2>
         <p>L'utilisateur peut résilier son compte à tout moment depuis les paramètres de l'application ou en contactant <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
         <p>L'éditeur se réserve le droit de suspendre ou de résilier un compte en cas de violation des présentes CGU, d'utilisation abusive ou frauduleuse du service, ou de non-paiement.</p>
-        <p>En cas de résiliation, les données de l'utilisateur seront conservées pendant la durée légale applicable (10 ans pour les preuves numériques), puis supprimées, sauf demande explicite de suppression anticipée.</p>
+        <p>La suppression du compte efface immédiatement les données de l'utilisateur, dans les conditions décrites à l'article « Conservation des données ». En cas de résiliation par l'éditeur, l'utilisateur est invité à récupérer ses documents avant la suppression de son compte.</p>
       </div>
 
       <div class="section" id="droit">
