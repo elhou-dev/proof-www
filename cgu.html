@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-title-fr="Conditions Générales d'Utilisation — Proof" data-title-en="Terms of Use — Proof">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,14 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/legal.css" />
+  <script src="assets/legal-lang.js"></script>
 </head>
 <body>
   <div class="wrap">
 
     <header>
       <a href="/" class="logo"><img src="assets/logo.svg" alt="Proof" width="90" height="36" /></a>
-      <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Retour à l'accueil</a>
+      <div class="header-actions">
+        <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span lang="fr">Retour à l'accueil</span><span lang="en">Back to home</span></a>
+        <div class="lang" role="group" aria-label="Langue / Language">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </header>
+
+    <div class="l10n" lang="fr">
 
     <div class="page-header">
       <div class="page-eyebrow">Légal</div>
@@ -47,7 +56,7 @@
         <div class="section-label">01 — Objet</div>
         <h2>Objet</h2>
         <p>Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités et conditions d'utilisation de l'application Proof, accessible via l'application mobile iOS et Android, ainsi que le présent site web.</p>
-        <p>Proof est un service de gestion de preuves numériques permettant la constitution de dossiers horodatés (état des lieux, cession de biens, litiges locatifs et autres cas d'usage nécessitant une preuve numérique certifiée).</p>
+        <p>Proof est un service de gestion de preuves numériques permettant la constitution de dossiers horodatés (état des lieux, cession de biens, litiges locatifs et autres cas d'usage nécessitant une preuve datée).</p>
       </div>
 
       <div class="section" id="acceptation">
@@ -176,17 +185,180 @@
 
     </div>
 
+    </div>
+
+    <div class="l10n" lang="en">
+
+    <div class="page-header">
+      <div class="page-eyebrow">Legal</div>
+      <h1>Terms<br />of Use</h1>
+      <p class="page-date">Last updated: October 2026</p>
+      <p class="translation-note">This English translation is provided for information. The French version prevails.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#purpose"><span class="toc-num">01</span> Purpose</a></li>
+        <li><a href="#acceptance"><span class="toc-num">02</span> Acceptance</a></li>
+        <li><a href="#the-service"><span class="toc-num">03</span> The service</a></li>
+        <li><a href="#account"><span class="toc-num">04</span> User account</a></li>
+        <li><a href="#plans"><span class="toc-num">05</span> Plans and payment</a></li>
+        <li><a href="#retention"><span class="toc-num">06</span> Data retention</a></li>
+        <li><a href="#intellectual-property"><span class="toc-num">07</span> Intellectual property</a></li>
+        <li><a href="#liability"><span class="toc-num">08</span> Liability</a></li>
+        <li><a href="#termination"><span class="toc-num">09</span> Termination</a></li>
+        <li><a href="#governing-law"><span class="toc-num">10</span> Governing law</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+
+      <div class="section" id="purpose">
+        <div class="section-label">01 — Purpose</div>
+        <h2>Purpose</h2>
+        <p>These Terms of Use set out how and on what conditions the Proof application may be used, through the iOS and Android mobile app and this website.</p>
+        <p>Proof is a digital evidence service for building timestamped folders (property condition reports, asset transfers, rental disputes and other cases that call for dated evidence).</p>
+      </div>
+
+      <div class="section" id="acceptance">
+        <div class="section-label">02 — Acceptance</div>
+        <h2>Acceptance of the terms</h2>
+        <p>Using Proof means accepting these Terms of Use in full. If you do not accept them, you must not use the service.</p>
+        <p>The publisher may change these Terms of Use at any time. Users are told of any material change by email. Continuing to use the service after that notice means accepting the new terms.</p>
+      </div>
+
+      <div class="section" id="the-service">
+        <div class="section-label">03 — The service</div>
+        <h2>The service</h2>
+        <p>Proof lets its users:</p>
+        <ul class="legal-list">
+          <li>Create and manage digital evidence folders, and reuse folder templates</li>
+          <li>Upload files (photos, PDFs, videos), timestamped and stored securely</li>
+          <li>Share folders with other users, by invitation or QR code, and manage their permissions</li>
+          <li>Sign each file in the app, then have each party confirm the folder's official signature through a link received by email, valid for 48 hours</li>
+          <li>Receive a summary PDF report once every party has signed the folder</li>
+          <li>See a full history of the actions taken on each folder and receive notifications</li>
+        </ul>
+        <p>Once every party has confirmed a folder's official signature, a cryptographic fingerprint (SHA-256) is computed for each of its files and printed in the PDF report: any later change to a file would produce a different fingerprint.</p>
+      </div>
+
+      <div class="section" id="account">
+        <div class="section-label">04 — User account</div>
+        <h2>User account</h2>
+        <p>Using the service requires a personal account. Users undertake to give accurate information and to keep it up to date.</p>
+        <p>Users alone are responsible for keeping their credentials confidential. Any use of the service with their credentials is presumed to be made by them.</p>
+        <p>If their account is compromised, users must tell the publisher at once at <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+      </div>
+
+      <div class="section" id="plans">
+        <div class="section-label">05 — Plans and payment</div>
+        <h2>Plans and payment</h2>
+        <p>Proof is available on four plans:</p>
+        <table class="plan-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Price</th>
+              <th>Storage</th>
+              <th>Folders</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name-cell">Free</td>
+              <td>Free</td>
+              <td>50 MB</td>
+              <td>1 folder</td>
+            </tr>
+            <tr>
+              <td class="plan-name-cell">Basic</td>
+              <td>€9.99 / month</td>
+              <td>10 GB</td>
+              <td>2 folders</td>
+            </tr>
+            <tr>
+              <td class="plan-name-cell">Pro</td>
+              <td>€19.99 / month</td>
+              <td>100 GB</td>
+              <td>10 folders</td>
+            </tr>
+            <tr>
+              <td class="plan-name-cell">Business</td>
+              <td>€49.99 / month</td>
+              <td>500 GB</td>
+              <td>Unlimited</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Paid plans are billed monthly. On Android and on the web, payment is processed by Stripe, a secure payment provider; on iOS and iPadOS, it is processed by Apple through the App Store, under its rules. There is no minimum term.</p>
+        <div class="highlight-box">
+          <p>Users can cancel their subscription at any time from their account. Cancellation takes effect at the end of the current billing period. No partial refund is made for the remaining period.</p>
+        </div>
+        <p>If a payment fails, access to paid features may be suspended until it is settled.</p>
+      </div>
+
+      <div class="section" id="retention">
+        <div class="section-label">06 — Data retention</div>
+        <h2>Data retention</h2>
+        <p>Files and folders uploaded to Proof are kept for as long as their owner does not delete them and their account exists, whatever the plan.</p>
+        <p>A folder deleted by its owner is erased immediately. As an exception, a folder that bears a third party's signature is archived instead of erased, to preserve the evidence the other party holds, then permanently erased six (6) years after the last signature it bears. This period is the general French limitation period (five years, article 2224 of the Civil Code) plus a one-year margin; it can be extended on a reasoned request sent to <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>, in particular during a dispute. Users are responsible for downloading and keeping the documents and reports they may need.</p>
+        <p>Files are stored encrypted on AWS S3 servers (eu-west-3 region, France). No data is passed to third parties for commercial purposes.</p>
+        <p>Users can delete their account at any time from the app: the account, its folders, files, signatures and history are then erased immediately. As an exception, when the account bears signatures another party relies on (a signature left in someone else's folder, or someone else's signature on its files), or when a subscription taken through the App Store or Google Play is still running, the account is closed and archived: it can no longer be accessed, and it is permanently erased at the end of the retention period above and, where relevant, of the subscription. A request sent to <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a> is handled within 30 days.</p>
+      </div>
+
+      <div class="section" id="intellectual-property">
+        <div class="section-label">07 — Intellectual property</div>
+        <h2>Intellectual property</h2>
+        <p>Users keep all rights to the files and content they upload to Proof. The publisher claims no ownership of that content.</p>
+        <p>By uploading files to the platform, users grant the publisher a non-exclusive licence, limited to what is strictly needed to provide the service (storage, display to authorised users, generation of secure download links).</p>
+        <p>The source code, brand, design and components of the Proof application are the exclusive property of the publisher and are protected by intellectual property law.</p>
+      </div>
+
+      <div class="section" id="liability">
+        <div class="section-label">08 — Liability</div>
+        <h2>Limitation of liability</h2>
+        <p>The publisher takes all reasonable steps to keep the service available and secure. It cannot, however, be held liable for:</p>
+        <ul class="legal-list">
+          <li>A temporary interruption of the service for maintenance or a technical incident</li>
+          <li>Data loss caused by an event beyond its control</li>
+          <li>Fraudulent use of the service by a third party</li>
+          <li>Unlawful content uploaded by a user</li>
+        </ul>
+        <p>Users alone are responsible for the content they upload to the platform and warrant that they hold all the rights needed to upload it.</p>
+        <p>The publisher's liability shall in no case exceed the amounts paid by the user over the 12 months before the incident.</p>
+      </div>
+
+      <div class="section" id="termination">
+        <div class="section-label">09 — Termination</div>
+        <h2>Termination</h2>
+        <p>Users can close their account at any time from the app's settings or by writing to <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+        <p>The publisher may suspend or close an account in the event of a breach of these Terms of Use, abusive or fraudulent use of the service, or non-payment.</p>
+        <p>Deleting the account erases the user's data, immediately or at the end of the evidence retention period, on the conditions set out in the "Data retention" article. If the publisher closes an account, the user is invited to retrieve their documents before the account is deleted.</p>
+      </div>
+
+      <div class="section" id="governing-law">
+        <div class="section-label">10 — Governing law</div>
+        <h2>Governing law and jurisdiction</h2>
+        <p>These Terms of Use are governed by French law.</p>
+        <p>Any dispute over the interpretation or performance of these terms that cannot be settled amicably will be brought before the courts of <strong style="color: var(--ink);">Toulouse (France)</strong>.</p>
+        <p>For any question about these Terms of Use, you can contact the publisher at <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+      </div>
+
+    </div>
+
+    </div>
+
     <footer>
-      <span>© <span id="year">2026</span> Proof — Tous droits réservés</span>
-      <nav aria-label="Liens légaux">
+      <span>© <span id="year">2026</span> Proof — <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></span>
+      <nav aria-label="Liens légaux / Legal links">
         <a href="mailto:contact@proof-app.eu">Contact</a>
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="cgu.html" aria-current="page">CGU</a>
-        <a href="privacy-policy.html">Confidentialité</a>
+        <a href="mentions-legales.html"><span lang="fr">Mentions légales</span><span lang="en">Legal notice</span></a>
+        <a href="cgu.html" aria-current="page"><span lang="fr">CGU</span><span lang="en">Terms</span></a>
+        <a href="privacy-policy.html"><span lang="fr">Confidentialité</span><span lang="en">Privacy</span></a>
       </nav>
     </footer>
 
   </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
