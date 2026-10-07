@@ -413,6 +413,7 @@
       <div class="grp">
         <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.0.k">Intégrité</div><div class="v" data-i18n="security.0.v">Empreinte SHA-256 de chaque fichier signé, calculée à la signature officielle et reportée dans l'accusé PDF.</div></div></div>
         <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.1.k">Stockage</div><div class="v" data-i18n="security.1.v">AWS S3, région eu-west-3 (Paris).</div></div></div>
+        <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.5.k">Conservation</div><div class="v" data-i18n="security.5.v">Preuves signées conservées 6 ans après la dernière signature, même si une partie supprime le dossier ou son compte. Plus longtemps sur demande.</div></div></div>
         <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.2.k">Accès</div><div class="v" data-i18n="security.2.v">URLs pré-signées à durée limitée. Aucune exposition directe.</div></div></div>
         <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.3.k">Traçabilité</div><div class="v" data-i18n="security.3.v">Journal d'activité complet : dépôts, signatures, invitations, modifications. La confirmation officielle garde sa date, son fuseau horaire et le nom saisi.</div></div></div>
         <div class="check-row"><div class="ic sm ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><div><div class="k" data-i18n="security.4.k">RGPD</div><div class="v" data-i18n="security.4.v">Données traitées en Union Européenne.</div></div></div>
@@ -481,6 +482,10 @@
         <details>
           <summary><span data-i18n="faq.1.q">Où sont stockées mes données ?</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p data-i18n="faq.1.a">Sur AWS S3, dans la région eu-west-3 (Paris). Les données sont traitées en Union Européenne, conformément au RGPD.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq.5.q">Combien de temps mes preuves sont-elles conservées ?</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p data-i18n="faq.5.a">Tant que le dossier existe. Une fois signé par d'autres parties, un dossier ne peut plus faire disparaître leur preuve : si son propriétaire le supprime, ou supprime son compte, il est archivé et conservé 6 ans après la dernière signature, puis effacé. Cette durée couvre le délai de prescription de droit commun (5 ans) et peut être prolongée sur demande, par exemple en cas de litige.</p>
         </details>
         <details>
           <summary><span data-i18n="faq.2.q">Qui peut accéder à un dossier ?</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -595,7 +600,8 @@
       { k: 'Storage', v: 'AWS S3, eu-west-3 region (Paris).' },
       { k: 'Access', v: 'Time-limited pre-signed URLs. No direct exposure.' },
       { k: 'Audit', v: 'Full activity log: uploads, signatures, invitations, edits. The official confirmation keeps its date, time zone and the name typed.' },
-      { k: 'GDPR', v: 'Data processed within the European Union.' }
+      { k: 'GDPR', v: 'Data processed within the European Union.' },
+      { k: 'Retention', v: 'Signed evidence kept for 6 years after the last signature, even if a party deletes the folder or their account. Longer on request.' }
     ],
     priceLabel: 'Pricing', priceH2: 'A plan for every volume.', priceIntro: 'Proof is available as a monthly subscription. Every plan includes full access to the iOS and Android app.',
     recommended: 'Recommended', free: '€0', forever: 'forever', month: '/ month',
@@ -611,7 +617,8 @@
       { q: 'Where is my data stored?', a: 'On AWS S3, in the eu-west-3 region (Paris). Data is processed within the European Union, in line with GDPR.' },
       { q: 'Who can access a folder?', a: 'Only the people you invite, by email or QR code, with read or write access. You can remove access, except from someone who has signed: their signature is part of the evidence.' },
       { q: 'Do the other parties need Proof?', a: 'Yes, to join a folder and sign the evidence from their device. The official confirmation is made from a link received by email, in any browser.' },
-      { q: 'Can I try it for free?', a: 'Yes. The Free plan includes 1 active folder, 50 MB of storage and unlimited signatures, with no time limit.' }
+      { q: 'Can I try it for free?', a: 'Yes. The Free plan includes 1 active folder, 50 MB of storage and unlimited signatures, with no time limit.' },
+      { q: 'How long is my evidence kept?', a: 'For as long as the folder exists. Once other parties have signed a folder, it can no longer make their evidence disappear: if its owner deletes it, or deletes their account, it is archived and kept for 6 years after the last signature, then erased. This period covers the general French limitation period (5 years) and can be extended on request, for instance during a dispute.' }
     ],
     contactH2: "Got a question? Let's talk.",
     contactSub: 'Proof is built in France. Our team answers questions about the product, data security or pricing.',
