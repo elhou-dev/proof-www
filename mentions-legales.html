@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-title-fr="Mentions légales — Proof" data-title-en="Legal Notice — Proof">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,14 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/legal.css" />
+  <script src="assets/legal-lang.js"></script>
 </head>
 <body>
   <div class="wrap no-toc">
 
     <header>
       <a href="/" class="logo"><img src="assets/logo.svg" alt="Proof" width="90" height="36" /></a>
-      <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Retour à l'accueil</a>
+      <div class="header-actions">
+        <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span lang="fr">Retour à l'accueil</span><span lang="en">Back to home</span></a>
+        <div class="lang" role="group" aria-label="Langue / Language">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </header>
+
+    <div class="l10n" lang="fr">
 
     <div class="page-header">
       <div class="page-eyebrow">Légal</div>
@@ -112,17 +121,116 @@
 
     </div>
 
+    </div>
+
+    <div class="l10n" lang="en">
+
+    <div class="page-header">
+      <div class="page-eyebrow">Legal</div>
+      <h1>Legal notice</h1>
+      <p class="page-date">Last updated: October 2026</p>
+      <p class="translation-note">This English translation is provided for information. The French version prevails.</p>
+    </div>
+
+    <div class="content">
+
+      <div class="section">
+        <div class="section-label">01 — Publisher</div>
+        <h2>Website publisher</h2>
+        <div class="field-row">
+          <span class="field-label">Name</span>
+          <span class="field-value">Elhoucine Haddouch</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Status</span>
+          <span class="field-value">Sole proprietor, trading as "Proof Archive"</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Registration</span>
+          <span class="field-value">RCS Toulouse 893 523 506</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">SIRET</span>
+          <span class="field-value">893 523 506 00028</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Registered office</span>
+          <span class="field-value">16 avenue de Lombez, 31300 Toulouse, France</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">EU VAT number</span>
+          <span class="field-value">FR71893523506</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Publication director</span>
+          <span class="field-value">Elhoucine Haddouch</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Contact</span>
+          <span class="field-value"><a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">02 — Hosting</div>
+        <h2>Host</h2>
+        <div class="field-row">
+          <span class="field-label">Company</span>
+          <span class="field-value">Railway Corporation</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Service</span>
+          <span class="field-value">Hosting of the Proof application's API (servers in Europe)</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Address</span>
+          <span class="field-value">548 Market St PMB 68956, San Francisco, CA 94104, United States</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Website</span>
+          <span class="field-value">railway.com</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Files</span>
+          <span class="field-value">Amazon Web Services, eu-west-3 region (Paris, France)</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">03 — Intellectual property</div>
+        <h2>Rights and content</h2>
+        <p>All the elements that make up the Proof website (text, graphics, software, source code, brand) are the exclusive property of Elhoucine Haddouch or are used with permission.</p>
+        <p>Any reproduction, representation, modification, publication or adaptation of all or part of the website's elements, by any means or process, is prohibited without prior written permission.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">04 — Liability</div>
+        <h2>Limitation of liability</h2>
+        <p>The publisher strives to keep the information published on this website accurate and up to date. It cannot, however, guarantee that the information made available is accurate, precise or complete.</p>
+        <p>The publisher accepts no liability for any damage resulting from a fraudulent intrusion by a third party that altered the information made available on the website.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">05 — Personal data</div>
+        <h2>Data protection</h2>
+        <p>The personal data collected when Proof is used is processed electronically to manage user accounts and provide the service.</p>
+        <p>Under the General Data Protection Regulation (GDPR), you have the right to access, rectify, erase and port your data. To exercise these rights, contact us at <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>.</p>
+      </div>
+
+    </div>
+
+    </div>
+
     <footer>
-      <span>© <span id="year">2026</span> Proof — Tous droits réservés</span>
-      <nav aria-label="Liens légaux">
+      <span>© <span id="year">2026</span> Proof — <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></span>
+      <nav aria-label="Liens légaux / Legal links">
         <a href="mailto:contact@proof-app.eu">Contact</a>
-        <a href="mentions-legales.html" aria-current="page">Mentions légales</a>
-        <a href="cgu.html">CGU</a>
-        <a href="privacy-policy.html">Confidentialité</a>
+        <a href="mentions-legales.html" aria-current="page"><span lang="fr">Mentions légales</span><span lang="en">Legal notice</span></a>
+        <a href="cgu.html"><span lang="fr">CGU</span><span lang="en">Terms</span></a>
+        <a href="privacy-policy.html"><span lang="fr">Confidentialité</span><span lang="en">Privacy</span></a>
       </nav>
     </footer>
 
   </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-title-fr="Politique de confidentialité — Proof" data-title-en="Privacy Policy — Proof">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,14 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/legal.css" />
+  <script src="assets/legal-lang.js"></script>
 </head>
 <body>
   <div class="wrap">
 
     <header>
       <a href="/" class="logo"><img src="assets/logo.svg" alt="Proof" width="90" height="36" /></a>
-      <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Retour à l'accueil</a>
+      <div class="header-actions">
+        <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span lang="fr">Retour à l'accueil</span><span lang="en">Back to home</span></a>
+        <div class="lang" role="group" aria-label="Langue / Language">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </header>
+
+    <div class="l10n" lang="fr">
 
     <div class="page-header">
       <div class="page-eyebrow">RGPD</div>
@@ -213,17 +222,217 @@
 
     </div>
 
+    </div>
+
+    <div class="l10n" lang="en">
+
+    <div class="page-header">
+      <div class="page-eyebrow">GDPR</div>
+      <h1>Privacy<br />Policy</h1>
+      <p class="page-date">Last updated: October 2026</p>
+      <p class="translation-note">This English translation is provided for information. The French version prevails.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#controller"><span class="toc-num">01</span> Data controller</a></li>
+        <li><a href="#data-collected"><span class="toc-num">02</span> Data collected</a></li>
+        <li><a href="#purposes"><span class="toc-num">03</span> Purposes</a></li>
+        <li><a href="#processors"><span class="toc-num">04</span> Processors</a></li>
+        <li><a href="#retention"><span class="toc-num">05</span> Retention</a></li>
+        <li><a href="#your-rights"><span class="toc-num">06</span> Your rights</a></li>
+        <li><a href="#cookies-tracking"><span class="toc-num">07</span> Cookies and tracking</a></li>
+        <li><a href="#contact-us"><span class="toc-num">08</span> Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+
+      <div class="section" id="controller">
+        <div class="section-label">01 — Data controller</div>
+        <h2>Data controller</h2>
+        <p>The controller of the personal data collected through the Proof application is:</p>
+        <ul class="legal-list">
+          <li><strong style="color: var(--ink);">Elhoucine Haddouch</strong> — Sole proprietor (Proof Archive), RCS Toulouse 893 523 506, 16 avenue de Lombez, 31300 Toulouse, France</li>
+          <li>Contact: <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></li>
+        </ul>
+        <p>Proof is a mobile application for timestamped, co-signed digital evidence, for professional and personal use in France and the European Union.</p>
+      </div>
+
+      <div class="section" id="data-collected">
+        <div class="section-label">02 — Data collected</div>
+        <h2>Data collected</h2>
+        <p>To provide the service, Proof collects the following data:</p>
+
+        <ul class="legal-list">
+          <li><strong style="color: var(--ink);">Identity data</strong> — first name, last name, email address; Google account identifier if you sign in with Google</li>
+          <li><strong style="color: var(--ink);">Uploaded files</strong> — photos, videos, PDF documents and other files added to evidence folders and folder templates</li>
+          <li><strong style="color: var(--ink);">Activity metadata</strong> — history of actions (uploads, signatures, invitations, edits), timestamps and the device's time zone at the time of the upload or signature, SHA-256 fingerprints of the files</li>
+          <li><strong style="color: var(--ink);">Signature data</strong> — at each official confirmation of a folder: the first and last name typed by the signer, the date and time zone of the confirmation, the IP address and browser used, and the fingerprint of the set of files confirmed. They are the evidence of consent, appear in the PDF acknowledgement sent to every party to the folder, and are kept with the evidence (see "Retention periods")</li>
+          <li><strong style="color: var(--ink);">Preferences and notifications</strong> — app language, the device's notification token (for push notifications)</li>
+          <li><strong style="color: var(--ink);">Payment data</strong> — handled by Stripe (Android and web) or by Apple (iOS); Proof stores no banking data, only the Stripe customer identifier and the subscription status</li>
+          <li><strong style="color: var(--ink);">Technical data</strong> — IP address at sign-in and API access logs, for operation and security; for administrator accounts, the IP address is kept in the console's audit log</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p>Proof does not collect geolocation data, phone contacts or biometric data. No data is collected for advertising.</p>
+        </div>
+      </div>
+
+      <div class="section" id="purposes">
+        <div class="section-label">03 — Purposes</div>
+        <h2>Purposes of processing</h2>
+        <p>The data collected is processed for the following purposes:</p>
+        <ul class="legal-list">
+          <li>Creating and managing user accounts</li>
+          <li>Providing the digital evidence service</li>
+          <li>Enabling the parties to sign documents electronically</li>
+          <li>Managing subscriptions and billing through Stripe and the App Store</li>
+          <li>Sending service emails (account verification, password reset, signature requests) and push notifications</li>
+          <li>Ensuring the integrity and traceability of evidence folders</li>
+          <li>Keeping the application secure and running</li>
+        </ul>
+        <p>The legal basis for processing is the performance of the contract (Terms of Use) entered into between the user and the publisher when the account is created.</p>
+      </div>
+
+      <div class="section" id="processors">
+        <div class="section-label">04 — Processors</div>
+        <h2>Processors and transfers</h2>
+        <p>Proof uses the following processors to provide the service:</p>
+
+        <table class="processor-table">
+          <thead>
+            <tr>
+              <th>Processor</th>
+              <th>Role</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="processor-name">Amazon Web Services (S3)</td>
+              <td>Storage of uploaded files</td>
+              <td>eu-west-3 — Paris, France</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Railway Inc.</td>
+              <td>Hosting of the backend API</td>
+              <td>Europe (GCP europe-west4)</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Stripe Inc.</td>
+              <td>Payment processing (Android and web)</td>
+              <td>United States (PCI-DSS certified)</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Apple</td>
+              <td>Payment processing (iOS, App Store)</td>
+              <td>Ireland / United States</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Resend, Inc.</td>
+              <td>Sending service emails</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Google (Firebase Cloud Messaging)</td>
+              <td>Delivery of push notifications</td>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <td class="processor-name">Google (Google Sign-In)</td>
+              <td>Sign-in with a Google account, if you choose it</td>
+              <td>United States</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Uploaded files and database backups are stored on AWS servers located in France (eu-west-3 region). Transfers to the United States (payment, emails, notifications, Google sign-in) are covered by appropriate safeguards (European Commission standard contractual clauses or the Data Privacy Framework).</p>
+      </div>
+
+      <div class="section" id="retention">
+        <div class="section-label">05 — Retention</div>
+        <h2>Retention periods</h2>
+        <ul class="legal-list">
+          <li><strong style="color: var(--ink);">Digital evidence</strong> (files, folders, signatures and signature data, history) — for as long as the folder exists. A folder deleted by its owner is erased immediately; if it bears a third party's signature, it is archived instead of erased, to preserve the other party's evidence, then erased six years after the last signature (the general French limitation period of five years, article 2224 of the Civil Code, plus a one-year margin). This period can be extended on request, in particular during a dispute</li>
+          <li><strong style="color: var(--ink);">Account data</strong> (email, first name, last name) — for the life of the account. Deleting the account from the app immediately erases the account, its folders, files, signatures and history; if the account bears signatures another party needs as evidence, or a running App Store or Google Play subscription, it is closed and archived, then erased at the end of the same retention period and of the subscription</li>
+          <li><strong style="color: var(--ink);">Backups</strong> — database backups may contain deleted data until they are renewed</li>
+          <li><strong style="color: var(--ink);">Technical logs</strong> — 90 days at most</li>
+          <li><strong style="color: var(--ink);">Payment data</strong> — kept by Stripe under its own policy</li>
+        </ul>
+        <p>You can delete a folder or your account yourself from the app, at any time. A request sent by email to <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a> is handled within 30 days.</p>
+      </div>
+
+      <div class="section" id="your-rights">
+        <div class="section-label">06 — Your rights</div>
+        <h2>Your GDPR rights</h2>
+        <p>Under the General Data Protection Regulation (GDPR), you have the following rights:</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-title">Right of access</div>
+            <p class="right-desc">Obtain a copy of all your personal data processed by Proof.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-title">Right to rectification</div>
+            <p class="right-desc">Correct inaccurate or incomplete data about you.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-title">Right to erasure</div>
+            <p class="right-desc">Ask for your data to be deleted, subject to legal obligations.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-title">Right to data portability</div>
+            <p class="right-desc">Receive your data in a structured, machine-readable format.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-title">Right to object</div>
+            <p class="right-desc">Object to the processing of your data in certain circumstances.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-title">Right to restriction</div>
+            <p class="right-desc">Ask for the processing of your data to be temporarily suspended.</p>
+          </div>
+        </div>
+
+        <p>To exercise these rights, contact us at <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a>. We will answer within 30 days. You also have the right to lodge a complaint with the <strong style="color: var(--ink);">CNIL</strong> (cnil.fr), the French data protection authority.</p>
+      </div>
+
+      <div class="section" id="cookies-tracking">
+        <div class="section-label">07 — Cookies and tracking</div>
+        <h2>Cookies and tracking</h2>
+        <div class="highlight-box">
+          <p>Proof <strong style="color: var(--ink);">uses no advertising cookies</strong>, does no behavioural tracking and sells no data to third parties.</p>
+        </div>
+        <p>The mobile app sets no cookies. The website uses no cookies: it only loads the Google Fonts typefaces and remembers your language choice (French or English) in your browser's local storage, without sending it anywhere. No third-party analytics tool runs on this site.</p>
+      </div>
+
+      <div class="section" id="contact-us">
+        <div class="section-label">08 — Contact</div>
+        <h2>Contact & DPO</h2>
+        <p>For any question about the protection of your personal data, or to exercise your rights, contact the data controller:</p>
+        <ul class="legal-list">
+          <li>Email: <a href="mailto:contact@proof-app.eu">contact@proof-app.eu</a></li>
+          <li>Controller: Elhoucine Haddouch</li>
+        </ul>
+        <p>This policy is governed by French law. Any complaint can be sent to the <a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission Nationale de l'Informatique et des Libertés (CNIL)</a>.</p>
+      </div>
+
+    </div>
+
+    </div>
+
     <footer>
-      <span>© <span id="year">2026</span> Proof — Tous droits réservés</span>
-      <nav aria-label="Liens légaux">
+      <span>© <span id="year">2026</span> Proof — <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></span>
+      <nav aria-label="Liens légaux / Legal links">
         <a href="mailto:contact@proof-app.eu">Contact</a>
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="cgu.html">CGU</a>
-        <a href="privacy-policy.html" aria-current="page">Confidentialité</a>
+        <a href="mentions-legales.html"><span lang="fr">Mentions légales</span><span lang="en">Legal notice</span></a>
+        <a href="cgu.html"><span lang="fr">CGU</span><span lang="en">Terms</span></a>
+        <a href="privacy-policy.html" aria-current="page"><span lang="fr">Confidentialité</span><span lang="en">Privacy</span></a>
       </nav>
     </footer>
 
   </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

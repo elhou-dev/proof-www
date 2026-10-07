@@ -35,7 +35,12 @@ a:hover { color: var(--brand); }
   max-width: 1080px; margin: 0 auto; padding: 0 20px;
   display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 48px;
 }
-.wrap > header, .wrap > .page-header, .wrap > footer { grid-column: 1 / -1; }
+.wrap > header, .page-header, .wrap > footer { grid-column: 1 / -1; }
+
+/* ── Language: each page holds its French and English copy; only the one matching <html lang> shows ── */
+.l10n { display: contents; }
+html[lang="en"] body [lang="fr"], html[lang="fr"] body [lang="en"] { display: none !important; }
+.translation-note { font-size: 13px; color: var(--ink2); margin-top: 6px; }
 
 /* ── Header ── */
 header {
@@ -49,6 +54,15 @@ header {
 .logo img { height: 36px; width: auto; }
 .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--ink2); }
 .back-link:hover { color: var(--ink); }
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.lang { display: flex; padding: 3px; gap: 2px; background: var(--grey); border-radius: 10px; }
+.lang button {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 5px 10px; border-radius: 8px;
+  border: 1px solid transparent; background: transparent; color: var(--ink2);
+  cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--card); border-color: var(--line); color: var(--ink); }
 
 /* ── Title ── */
 .page-header { padding: 56px 0 40px; }
@@ -158,4 +172,9 @@ footer a:hover, footer a[aria-current="page"] { color: var(--ink); }
   .toc { position: static; margin-bottom: 40px; }
   .page-header { padding: 40px 0 28px; }
   .field-label { flex-basis: 100%; }
+}
+
+/* On a phone the logo alone leads home: the back link would push the language switch off screen */
+@media (max-width: 520px) {
+  .back-link { display: none; }
 }
